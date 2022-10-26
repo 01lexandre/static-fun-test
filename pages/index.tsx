@@ -56,6 +56,7 @@ export default function IndexPage() {
     // if (storedEmail) setEmail(storedEmail);
   }, []);
 
+
   if (error) {
     return (
       <FixedCenterLayout>
