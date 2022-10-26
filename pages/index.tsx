@@ -33,7 +33,7 @@ export default function IndexPage() {
       getPageData(href)
         .then(data => {
           let {client} = data
-          console.log(client)
+          console.log('chegou', client)
           if (!data) {
             setPageData(null);
             return;
