@@ -88,11 +88,7 @@ export function Welcome() {
       <TopBar grayScale={Boolean(pageExists)} />
       <div className="welcome-container">
         <div className="welcome">
-          <h1>Welcome to</h1>
-          <div>
-            <span className="static">static</span>
-            <span className="fun">.fun</span>
-          </div>
+          <h1>Olaaaaa 01</h1>
           <p>
             An{" "}
             <a href="https://github.com/vercel/static-fun" target="_blank">
