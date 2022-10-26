@@ -44,7 +44,8 @@ export default function IndexPage() {
           return;
         })
         .catch(e => {
-          setError({ message: e.message, stack: e.stack });
+          // @ts-ignore
+          return setError({message: e.message, stack: e.stack});
         });
     }
     return () => {};
