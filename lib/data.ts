@@ -1,4 +1,4 @@
-import axios from 'axios'
+// import axios from 'axios'
 
 async function getPageData(href): Promise<any> {
   const { host } = window.location;
@@ -18,12 +18,12 @@ async function getPageData(href): Promise<any> {
         'Authorization': 'Basic 1d134410b4ab9802daf227c690d70d035853587e517d976a3f270ebfb853',
       }
     };
-    let res = await axios.get('https://api.naweby.com.br/ecommerce/'+page, config);
+    let res = await fetch('https://api.naweby.com.br/ecommerce/'+page, config);
     // const data = await res.json()
     // console.log(res)
 
     if (res.status === 200) {
-      let { data } = await res;
+      let { data } = await res.json();
       console.log(data)
       return { client: data.data };
     }
