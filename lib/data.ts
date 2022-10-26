@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 async function getPageData(href): Promise<any> {
   const { host } = window.location;
   let isDev = host.includes('localhost');
@@ -8,22 +10,33 @@ async function getPageData(href): Promise<any> {
     if (page === 'www') {
       return null;
     }
-    let res = await fetch(`/api/get-page?page=${page}`);
+    // let res = await fetch(`/api/get-page?page=${page}`);
+    //
+    // console.log(res)
+    const config = {
+      headers:{
+        'Authorization': 'Basic 1d134410b4ab9802daf227c690d70d035853587e517d976a3f270ebfb853',
+      }
+    };
+    let res = await axios.get('https://api.naweby.com.br/ecommerce/'+page, config);
+    // const data = await res.json()
+    // console.log(res)
 
     if (res.status === 200) {
-      let { html, allowEdit, token } = await res.json();
-      return { html, allowEdit, editLink: `${href}?edit=${token}` };
+      let { data } = await res;
+      console.log(data)
+      return { client: data.data };
     }
 
-    if (res.status === 404) {
-      let { html, token } = await res.json();
-      return { html, editLink: `${href}?edit=${token}` };
-    }
-
-    if (!res.ok && res.status !== 404) {
-      let { stack, message } = await res.json();
-      return { errorCode: res.status, stack, message };
-    }
+    // if (res.status === 404) {
+    //   let { html, token } = await res.json();
+    //   return { html, editLink: `${href}?edit=${token}` };
+    // }
+    //
+    // if (!res.ok && res.status !== 404) {
+    //   let { stack, message } = await res.json();
+    //   return { errorCode: res.status, stack, message };
+    // }
   }
 }
 

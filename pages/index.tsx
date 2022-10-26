@@ -28,17 +28,19 @@ export default function IndexPage() {
     if (!pageData) {
       getPageData(href)
         .then(data => {
+          let {client} = data
+          console.log(client)
           if (!data) {
             setPageData(null);
             return;
           }
-          if (data.errorCode) {
-            let { errorCode, stack, message } = data;
-            setError({ errorCode, stack, message });
-            return;
-          }
-          let { html, allowEdit, editLink } = data;
-          setPageData({ html, allowEdit, editLink });
+          // if (data.errorCode) {
+          //   let { errorCode, stack, message } = data;
+          //   setError({ errorCode, stack, message });
+          //   return;
+          // }
+          // let { html, allowEdit, editLink } = data;
+          setPageData(client);
           return;
         })
         .catch(e => {
@@ -49,8 +51,8 @@ export default function IndexPage() {
   }, [pageData]);
 
   useEffect(() => {
-    let storedEmail = localStorage.getItem("email");
-    if (storedEmail) setEmail(storedEmail);
+    // let storedEmail = localStorage.getItem("email");
+    // if (storedEmail) setEmail(storedEmail);
   }, []);
 
   if (error) {
