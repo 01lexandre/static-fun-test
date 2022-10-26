@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from 'axios'
 
 async function getPageData(href): Promise<any> {
   const { host } = window.location;
