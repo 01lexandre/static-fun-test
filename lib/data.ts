@@ -24,7 +24,7 @@ async function getPageData(href): Promise<any> {
 
     if (res.status === 200) {
       let { data } = await res.json();
-      return { client: data };
+      return data;
     }
 
     // if (res.status === 404) {

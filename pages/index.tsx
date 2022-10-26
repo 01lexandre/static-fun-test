@@ -32,8 +32,7 @@ export default function IndexPage() {
     if (!pageData) {
       getPageData(href)
         .then(data => {
-          let {client} = data
-          console.log('chegou', client)
+          console.log('chegou', data)
           if (!data) {
             setPageData(null);
             return;
@@ -44,7 +43,7 @@ export default function IndexPage() {
           //   return;
           // }
           // let { html, allowEdit, editLink } = data;
-          setPageData(client);
+          setPageData(data);
           return;
         })
         .catch(e => {
